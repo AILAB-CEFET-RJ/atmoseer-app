@@ -1,0 +1,6 @@
+Baixar mongoDB (Compass) https://www.mongodb.com/try/download/community
+Baixar node.js  https://nodejs.org/en/download
+
+No terminal: 
+    npm install (Instalar depedências)
+    node app.js (Ligar Servidor)
