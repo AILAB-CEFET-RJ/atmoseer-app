@@ -47,10 +47,10 @@ function WeatherData() {
     //Salva os dados no mongodb
     COR.insertMany(weatherData)
     .then(() => {
-        console.log('Dados meteorológicos salvos no MongoDB com sucesso.')
+        console.log('Dados do COR salvos no MongoDB com sucesso.')
     })
     .catch((error) => {
-        console.error('Erro ao salvar dados meteorológicos no MongoDB:', error)
+        console.error('Erro ao salvar dados do COR no MongoDB:', error)
     })
 }
 
