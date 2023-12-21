@@ -1,0 +1,8 @@
+{
+  "inmetApi": {
+    "baseUrl": "https://apitempo.inmet.gov.br/token/estacao/"
+  },
+  "radiossondaApi": {
+    "baseUrl": "http://weather.uwyo.edu/cgi-bin/sounding?region=samer&TYPE=TEXT%3ALIST&STNM=83746"
+  }
+}
