@@ -10,6 +10,8 @@ const http = require('http')
 //Importando o schema do mongodb da Radiossonda
 const Sounding = require('../dbmodels/Sounding');
 
+const config = require('./config.json');
+
 //Função InmetData: Envia uma requisição http GET para pegar os dados da radiossonda
 function SoundingData() {
     let response = ''
@@ -22,11 +24,10 @@ function SoundingData() {
     if (date.getHours() >= 12) hour = 12
 
     //Monta a url que será enviada a requisição
-    http.get('http://weather.uwyo.edu/cgi-bin/sounding?region=samer&TYPE=TEXT%3ALIST&STNM=83746'+ 
-    '&YEAR='+ date.getFullYear() + 
-    '&MONTH='+ (date.getMonth() + 1) +
-    '&FROM='+ date.getDate() + hour + 
-    '&TO='+ date.getDate() + hour, (res) => {
+    let url = `${config.radiossondaApi.baseUrl}` +
+    `&YEAR=${date.getFullYear()}&MONTH=${date.getMonth() + 1}&FROM=${date.getDate()}${hour}&TO=${date.getDate()}${hour}`;
+
+http.get(url, (res) => {
         res.on('data', (chunk) => {
             response += chunk
         })

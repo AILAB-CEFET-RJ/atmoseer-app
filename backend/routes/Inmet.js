@@ -10,6 +10,9 @@ const Inmet = require('../dbmodels/Inmet');
 //Importando o token: Necessário criar um arquivo token.js com uma const do token do Inmet
 const token = require('./token');
 
+//Importando a Configuradcao de URl do arquivo Json
+const config = require('./config.json');
+
 //Função InmetData: Envia uma requisição https GET para pegar os JSONs de cada estação do Inmet
 function InmetData() {
 
@@ -28,7 +31,7 @@ function InmetData() {
     INMET_STATION_CODES_RJ.forEach(code => {
         let response = ''
         //Monta a url que será enviada a requisição
-        let url = 'https://apitempo.inmet.gov.br/token/estacao/'+
+        let url = config.inmetApi.baseUrl+
                     date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '/'+
                     date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '/'+
                     code + '/' + token
@@ -44,9 +47,13 @@ function InmetData() {
                 const inmetDataArray = []
 
                 for (let i = 0; i < jsonData.length; i++) {
-                    //Pega a data anteriormente definida e coloca a hora de medição registrada no JSON da estação
-                    date.setHours(jsonData[i].HR_MEDICAO.substr(0, 2))
-                    
+
+                    // Pega os dois primeiros caracteres da string HR_MEDICAO e converte para número
+                    const horas = parseInt(jsonData[i].HR_MEDICAO.substr(0, 2), 10);
+                    // Cria uma nova instância de Date para cada iteração
+                    const newDate = new Date(date);
+                    newDate.setHours(horas);
+
                     //Armazena os dados do JSON da estação em um objeto Inmet, incluindo seu código e tempo da consulta em formato datetime
                     const newInmetData = new Inmet( {
                         COD_ESTACAO: code,
@@ -67,9 +74,9 @@ function InmetData() {
                         TEM_MIN: jsonData[i].TEM_MIN,
                         UMD_MIN: jsonData[i].UMD_MIN,
                         PTO_MAX: jsonData[i].PTO_MAX,
-                        TIME: date
+                        TIME: newDate
                     })
-                    
+
                     inmetDataArray.push(newInmetData)
                 }
 
