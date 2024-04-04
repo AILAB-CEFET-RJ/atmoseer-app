@@ -1,8 +1,8 @@
 import { API_URL } from './config'
 
 // Extends the return of the HTTPError class
-class HTTPError extends Error {
-  readonly response: any;
+class HTTPError<T = unknown> extends Error {
+  readonly response: T;
   readonly status: number;
   readonly statusText: string;
 
@@ -18,7 +18,6 @@ const createQuery =
   (apiURL: RequestInfo | URL = '', baseInit?: RequestInit) =>
     <TResponse = unknown>(url: RequestInfo | URL, init?: RequestInit) =>
       fetch(`${apiURL}${url}`, { ...baseInit, ...init }).then(async (res) => {
-        // Now, we get the JSON response early
         const response = await res.json()
 
         if (!res.ok)
@@ -27,7 +26,6 @@ const createQuery =
          return response as TResponse
        })
 
-// In this function, we define our base URL and headers.
 const query = createQuery(
   API_URL,
   {
