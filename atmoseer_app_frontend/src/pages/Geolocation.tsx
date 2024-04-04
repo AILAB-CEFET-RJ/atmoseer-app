@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const GeolocationExample: React.FC = () => {
   const [latitude, setLatitude] = useState<number | null>(null);
@@ -49,7 +50,9 @@ const GeolocationExample: React.FC = () => {
         </p>
       )}
       {forecast && <p>Forecast: {forecast}</p>}
+      <Link to="/home">Voltar</Link>
     </div>
+
   );
 };
 
