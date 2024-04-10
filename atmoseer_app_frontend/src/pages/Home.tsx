@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom"
-
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/home.css";
 
 export const Home: React.FC = () => {
   return (
-    <>
-      <h1>Home</h1>
-      <p>Seja bem-vindo ao Atmoseer!</p>
-      <p>Para acessar a previsão do tempo, clique <Link to="/forecast">aqui</Link>.
-      </p>
-    </>
-  )
-}
+    <div className="container-wrapper">
+      <div id="container">
+        <h1>Bem-vindo ao Atmoseer!</h1>
+        <p>
+          Acompanhe a previsão do tempo para sua região.
+        </p>
+        <Link to="/forecast" className="weather-button">Ver Previsão</Link>
+      </div>
+    </div>
+  );
+};
