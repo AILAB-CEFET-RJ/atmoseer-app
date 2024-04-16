@@ -4,7 +4,6 @@ import { useForecastData } from '../hooks/useForecastData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faMapMarkerAlt  } from '@fortawesome/free-solid-svg-icons';
 import WeatherIcon from '../components/WeatherIcon';
-import '../styles/geolocation.css';
 
 const GeolocationExample: React.FC = () => {
   const [latitude, setLatitude] = useState<number | null>(null);
@@ -59,39 +58,41 @@ const GeolocationExample: React.FC = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="container-wrapper">
-      <div id="container">
-        <div className='all_infos'>
-          <div className="info">
-            <FontAwesomeIcon icon={faGlobe} id="latitude_icon" />
-            <div>
-              <h2>Latitude</h2>
-              <p id="latitude">{latitude}</p>
+    <div className='flex justify-center'>
+      <div className="flex justify-flex justify-center items-center min-h-screen w-4/5">
+        <div className="flex flex-col items-center bg-[#f0f8ffcc] rounded-2xl px-4 py-2 shadow-md">
+          <div className='grid grid-cols-2 mt-2 gap-1'>
+            <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-2">
+              <FontAwesomeIcon icon={faGlobe} className="text-blue-800 text-2xl ml-2" />
+              <div>
+                <h2 className='ml-2 mt-1 text-base font-semibold'>Latitude</h2>
+                <p className="text-base text-gray-800 m-2">{latitude}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-2">
+              <FontAwesomeIcon icon={faGlobe} className="text-green-800 text-2xl ml-2"/>
+              <div>
+                <h2 className='ml-2 mt-1 text-base font-semibold'>Longitude</h2>
+                <p className='text-base text-gray-800 m-2'>{longitude}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-2">
+              <WeatherIcon forecastMessage={forecastMessage} />
+              <div>
+                <h2 className='ml-2 mt-1 text-base font-semibold'>Previsão do Tempo</h2>
+                <p className="text-base text-gray-800 m-2">{forecastMessage}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-purple-800 text-2xl ml-2" />
+              <div>
+              <h2 className='ml-2 mt-1 text-base font-semibold'>Estação</h2>
+                <p className="text-base text-gray-800 m-2">Nome estação</p>
+              </div>
             </div>
           </div>
-          <div className="info">
-            <FontAwesomeIcon icon={faGlobe} id="longitude_icon"/>
-            <div>
-              <h2>Longitude</h2>
-              <p id="longitude">{longitude}</p>
-            </div>
-          </div>
-          <div className="info">
-            <WeatherIcon forecastMessage={forecastMessage} />
-            <div>
-              <h2>Previsão do Tempo</h2>
-              <p>{forecastMessage}</p>
-            </div>
-          </div>
-          <div className="info">
-          <FontAwesomeIcon icon={faMapMarkerAlt} id="local_icon" />
-            <div>
-            <h2>Nome do lugar</h2>
-              <p>{placeName}</p>
-            </div>
-          </div>
+          <Link to="/home" className="inline-block px-4 py-2 mt-2 rounded text-white font-bold no-underline bg-blue-500 hover:bg-blue-600 transition-colors">Voltar</Link>      
         </div>
-        <Link to="/home" className="back-button">Voltar</Link>      
       </div>
     </div>
   );
