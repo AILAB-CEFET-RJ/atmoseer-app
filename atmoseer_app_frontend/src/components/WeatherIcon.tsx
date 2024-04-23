@@ -1,31 +1,36 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faCloud, faCloudShowersHeavy, faCloudRain, faBolt } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faCloud, faCloudShowersHeavy, faCloudRain, faThunderstorm, faBolt } from '@fortawesome/free-solid-svg-icons';
 
-const WeatherIcon: React.FC<{ forecastMessage: string }> = ({ forecastMessage }) => {
-  // Função para determinar qual ícone mostrar com base na mensagem de previsão
-  const getIconForForecast = (message: string) => {
-    if (message.includes('0')) {
-      return <FontAwesomeIcon icon={faSun} className="text-2xl ml-2 text-yellow-600" />;
-    } else if (message.includes('1')) {
-      return <FontAwesomeIcon icon={faCloud} className="text-2xl ml-2 text-gray-400" />;
-    } else if (message.includes('2')) {
-      return <FontAwesomeIcon icon={faCloudRain} className="text-2xl ml-2 text-blue-500" />;
-    } else if (message.includes('3')) {
-      return <FontAwesomeIcon icon={faCloudShowersHeavy} className="text-2xl ml-2 text-gray-700" />;
-    } else if (message.includes('4')) {
-      return <FontAwesomeIcon icon={faBolt} className="text-2xl ml-2 text-yellow-300" />;
-    } else {
-      // Caso nenhum dos valores previstos seja encontrado na mensagem, retornar um ícone padrão
-      return <FontAwesomeIcon icon={faSun} className="weather-icon sun" />;
-    }
-  };
+interface WeatherIconProps {
+  forecastMessage: string;
+}
 
-  return (
-    <div>
-      {getIconForForecast(forecastMessage)}
-    </div>
-  );
+const WeatherIcon: React.FC<WeatherIconProps> = ({ forecastMessage }) => {
+  let icon = null;
+
+  switch (forecastMessage.toLowerCase()) {
+    case 'chuva':
+      icon = <FontAwesomeIcon icon={faCloudRain} className="text-blue-400 text-2xl ml-2 text-center" />;
+      break;
+    case 'chuva forte':
+      icon = <FontAwesomeIcon icon={faCloudShowersHeavy} className="text-blue-600 text-2xl ml-2 text-center" />;
+      break;
+    case 'chuva muito forte':
+      icon = <FontAwesomeIcon icon={faCloudRain} className="text-gray-800 text-2xl ml-2" />;
+      break;
+    case 'tempestade':
+      icon = <FontAwesomeIcon icon={faThunderstorm} className="text-blue-800 text-2xl ml-2" />;
+      break;
+    case 'sem chuva':
+      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2" />;
+      break;
+    default:
+      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2" />;
+      break;
+  }
+
+  return icon;
 };
 
 export default WeatherIcon;
