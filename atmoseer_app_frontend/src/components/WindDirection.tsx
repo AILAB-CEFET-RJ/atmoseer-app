@@ -36,7 +36,7 @@ const WindDirection = ({ windDirection }) => {
   };
 
   return (
-    <p className="text-base text-gray-800 m-2">
+    <p className="text-sm md:text-base text-gray-800 my-2">
       <span>{getWindDirection(windDirection)}</span>
     </p>
   );
