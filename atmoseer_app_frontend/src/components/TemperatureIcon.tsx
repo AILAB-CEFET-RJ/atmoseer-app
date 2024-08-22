@@ -22,7 +22,7 @@ const TemperatureIcon = ({ temperature, className }) => {
   }
 
   return (
-    <FontAwesomeIcon icon={temperatureIcon} className={`${temperatureColor} ${className}`} />
+    <FontAwesomeIcon icon={temperatureIcon} className={`${temperatureColor} ${className}`} data-test='temperatura-icon' />
   );
 };
 

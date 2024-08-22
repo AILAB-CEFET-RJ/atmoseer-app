@@ -1,0 +1,13 @@
+{
+    "wmo_code": 1,
+    "condition": "Mainly clear",
+    "temperature": 35,
+    "cloud_cover": 22,
+    "precipitation": 0,
+    "humidity": 83,
+    "wind_direction": 284,
+    "wind_speed": 1.5,
+    "timestamp": "2024-08-14T03:15:00+00:00",
+    "latitude": -22.875,
+    "longitude": -43.25
+  }

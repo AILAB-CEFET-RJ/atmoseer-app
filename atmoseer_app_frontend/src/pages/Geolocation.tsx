@@ -96,21 +96,21 @@ const GeolocationExample: React.FC = () => {
                     <FontAwesomeIcon icon={faEarthAmericas} className="text-yellow-400 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Latitude</h2>
-                      <p className="text-sm md:text-base my-2 text-gray-800">{latitude}</p>
+                      <p className="text-sm md:text-base my-2 text-gray-800" data-test='latitude-text'>{latitude}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <FontAwesomeIcon icon={faEarthEurope} className="text-green-800 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Longitude</h2>
-                      <p className='text-sm md:text-base text-gray-800 my-2'>{longitude}</p>
+                      <p className='text-sm md:text-base text-gray-800 my-2' data-test='longitude-text'>{longitude}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <WeatherIcon forecastMessage={forecastMessage} />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Previsão do Tempo</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{forecastMessage}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='previsao-text'>{forecastMessage}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
@@ -124,35 +124,35 @@ const GeolocationExample: React.FC = () => {
                     <FontAwesomeIcon icon={faMapLocationDot} className="text-purple-800 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Estação de Previsão</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{placeName}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='estacao-text'>{placeName}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <TemperatureIcon temperature={openMeteoData?.temperature} className="text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Temperatura Atual</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{openMeteoData?.temperature && `${openMeteoData.temperature} °C`}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='temperatura-text'>{openMeteoData?.temperature && `${openMeteoData.temperature} °C`}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <FontAwesomeIcon icon={faCloudArrowDown} className="text-gray-300 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Nebulosidade</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{openMeteoData?.cloud_cover && `${openMeteoData.cloud_cover} %`}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='nebulosidade-text'>{openMeteoData?.cloud_cover && `${openMeteoData.cloud_cover} %`}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <FontAwesomeIcon icon={faTint} className="text-blue-400 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Umidade</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{openMeteoData?.humidity && `${openMeteoData.humidity} %`}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='umidade-text'>{openMeteoData?.humidity && `${openMeteoData.humidity} %`}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">
                     <FontAwesomeIcon icon={faWind} className="text-blue-300 text-2xl ml-2" />
                     <div>
                       <h2 className='mt-1 text-sm md:text-base font-semibold'>Velocidade do Vento</h2>
-                      <p className="text-sm md:text-base text-gray-800 my-2">{openMeteoData?.wind_speed && `${openMeteoData.wind_speed} km/h`}</p>
+                      <p className="text-sm md:text-base text-gray-800 my-2" data-test='velocidade-vento-text'>{openMeteoData?.wind_speed && `${openMeteoData.wind_speed} km/h`}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-start p-0.5 rounded-lg shadow-sm bg-white gap-3">

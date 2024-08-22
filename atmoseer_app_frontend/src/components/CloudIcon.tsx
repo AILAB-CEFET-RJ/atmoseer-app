@@ -36,7 +36,7 @@ const CloudIcon = ({ condition, colorIntensity }) => {
   
   const getCloudIcon = (condition) => {
     const { icon, color, colorIntensity } = cloudIcons[condition] || { icon: faCloud, color: "gray", colorIntensity: 400 };
-    return <FontAwesomeIcon icon={icon} className={`text-${color}-${colorIntensity} text-2xl ml-2`} />;
+    return <FontAwesomeIcon icon={icon} className={`text-${color}-${colorIntensity} text-2xl ml-2`} data-test="clima-icon"/>;
   };
 
   return getCloudIcon(condition);

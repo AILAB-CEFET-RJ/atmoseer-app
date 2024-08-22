@@ -1,0 +1,13 @@
+{
+    "atmoseer_result": {
+      "prediction_result": 1,
+      "prediction_mapped": "rain",
+      "station": {
+        "name": "Alto da Boa Vista",
+        "situation": "Operante",
+        "latitude": -22.9658,
+        "longitude": -43.2783,
+        "id": "alto_da_boa_vista"
+      }
+    }
+  }

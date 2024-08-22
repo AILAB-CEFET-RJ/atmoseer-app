@@ -42,7 +42,7 @@ const WeatherConditionTranslation = ({ conditionData}) => {
     }
   }, [conditionData, translationMap]);
 
-  return <p className="text-sm md:text-base text-gray-800 my-2"><span>{translatedCondition}</span></p>
+  return <p data-test="clima-text" className="text-sm md:text-base text-gray-800 my-2"><span>{translatedCondition}</span></p>
   
 };
 

@@ -11,22 +11,22 @@ const WeatherIcon: React.FC<WeatherIconProps> = ({ forecastMessage }) => {
 
   switch (forecastMessage.toLowerCase()) {
     case 'chuva':
-      icon = <FontAwesomeIcon icon={faCloudRain} className="text-blue-400 text-2xl ml-2 text-center" />;
+      icon = <FontAwesomeIcon icon={faCloudRain} className="text-blue-400 text-2xl ml-2 text-center"  data-test="previsao-icon"/>;
       break;
     case 'chuva forte':
-      icon = <FontAwesomeIcon icon={faCloudShowersHeavy} className="text-blue-600 text-2xl ml-2 text-center" />;
+      icon = <FontAwesomeIcon icon={faCloudShowersHeavy} className="text-blue-600 text-2xl ml-2 text-center" data-test="previsao-icon" />;
       break;
     case 'chuva muito forte':
-      icon = <FontAwesomeIcon icon={faCloudRain} className="text-gray-800 text-2xl ml-2" />;
+      icon = <FontAwesomeIcon icon={faCloudRain} className="text-gray-800 text-2xl ml-2" data-test="previsao-icon"/>;
       break;
     case 'tempestade':
-      icon = <FontAwesomeIcon icon={faThunderstorm} className="text-blue-800 text-2xl ml-2" />;
+      icon = <FontAwesomeIcon icon={faThunderstorm} className="text-blue-800 text-2xl ml-2"data-test="previsao-icon" />;
       break;
     case 'sem chuva':
-      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2" />;
+      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2" data-test="previsao-icon"/>;
       break;
     default:
-      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2" />;
+      icon = <FontAwesomeIcon icon={faSun} className="text-yellow-400 text-2xl ml-2"data-test="previsao-icon" />;
       break;
   }
 
