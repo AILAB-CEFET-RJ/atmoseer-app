@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  atmoseer-app:
+    build:
+        context: ./
+    container_name: atmoseer-app
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: /bin/sh -c "yarn dev --host 0.0.0.0"
+    ports:
+      - "5173:5173"
