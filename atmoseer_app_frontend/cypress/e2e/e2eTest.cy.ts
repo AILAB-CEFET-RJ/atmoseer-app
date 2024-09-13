@@ -1,4 +1,4 @@
-describe("1.0 Acessing atmoseer app Frontend", () => {
+describe("1.0 Acessando atmoseer app Frontend", () => {
   it("1.1 Should open a web page", () => {
     cy.visit("http://localhost:5173/");
     cy.get(`[data-test="homepage-title"]`).should("contain", "Bem-vindo ao Atmoseer!");
@@ -6,8 +6,17 @@ describe("1.0 Acessing atmoseer app Frontend", () => {
     cy.get(`[data-test="homepage-btn"]`).should("contain", "Ver Previsão")
   });
 
-  it("1.2 Do Request and verify all fields", ()=>{
-    cy.visit("http://localhost:5173/");
+  it("1.2 Fazendo um Request e verificando todos os campos", ()=>{
+    cy.visit("http://localhost:5173/", {
+      onBeforeLoad (win) {
+        // previsão do Alto da Boa Vista
+        const latitude = -22.8950016;
+        const longitude = -43.3127424;
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition').callsFake((cb) => {
+          return cb({ coords: { latitude, longitude } });
+        });
+      },
+    });
 
     //Utilização de dados mockados para forecast e Weather
     cy.intercept("GET", "**/forecast/**", {
@@ -36,8 +45,8 @@ describe("1.0 Acessing atmoseer app Frontend", () => {
   })
 });
 
-describe("2.0 Temperature", () => {
-  it("2.1 Low Temperature", () => {
+describe("2.0 Temperatura", () => {
+  it("2.1 Temperatura baixa", () => {
     cy.visit("http://localhost:5173");
   
     //Utilização de dados mockados para forecast e Weather
@@ -63,7 +72,7 @@ describe("2.0 Temperature", () => {
       .and('contain', 'M448 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM320 96a96 96 0')
   });
 
-  it("2.2 Half Temperature", () => {
+  it("2.2 Temperatura mediana", () => {
     cy.visit("http://localhost:5173");
   
     //Utilização de dados mockados para forecast e Weather
@@ -89,7 +98,7 @@ describe("2.0 Temperature", () => {
       .and('contain', 'M160 64c-26.5 0-48 21.5-48 48V276.5c0 17.3-7.1 31.9-15.3 42.5C86.2')
   });
 
-  it("2.3 High Temperature", () => {
+  it("2.3 Alta Temperatura", () => {
     cy.visit("http://localhost:5173");
   
     //Utilização de dados mockados para forecast e Weather
