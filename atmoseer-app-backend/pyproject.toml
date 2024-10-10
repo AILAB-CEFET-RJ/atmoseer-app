@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "atmoseer-app-backend"
+version = "0.1.0"
+description = "Atmoseer backend"
+authors = ["Felipe Curcio <felipe_nieto010@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.0"
+uvicorn = {extras = ["standard"], version = "^0.29.0"}
+pydantic-settings = "^2.2.1"
+torch = "^2.2.1"
+numpy = "^1.26.4"
+scikit-learn = "^1.4.1.post1"
+pandas = "^2.2.1"
+matplotlib = "^3.8.3"
+sqlmodel = "^0.0.16"
+psycopg2 = "^2.9.9"
+alembic = "^1.13.1"
+httpx = "^0.27.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.5"
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = 'atmoseer_app_backend.main:main'
+
+[tool.ruff]
+target-version = "py312"
+exclude = ["migrations"]
+line-length = 110
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle
+    "F", # flake8
+    "I", # isort
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long
+]
+
+[tool.ruff.lint.isort]
+known-third-party = ["atmoseer"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
