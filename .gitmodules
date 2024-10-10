@@ -1,0 +1,4 @@
+[submodule "atmoseer-app-backend/atmoseer"]
+	path = atmoseer-app-backend/atmoseer
+	url = https://github.com/AILAB-CEFET-RJ/atmoseer.git
+    branch = main
